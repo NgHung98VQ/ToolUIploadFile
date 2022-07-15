@@ -35,9 +35,9 @@
             this.uploadBtn = new System.Windows.Forms.Button();
             this.statusLbl = new System.Windows.Forms.Label();
             this.stopBtn = new System.Windows.Forms.Button();
-            this.startTxt = new System.Windows.Forms.TextBox();
+            this.fileToolTxt = new System.Windows.Forms.TextBox();
             this.runBtn = new System.Windows.Forms.Button();
-            this.stopTxt = new System.Windows.Forms.TextBox();
+            this.deleteBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // listIpBtn
@@ -89,14 +89,14 @@
             // statusLbl
             // 
             this.statusLbl.AutoSize = true;
-            this.statusLbl.Location = new System.Drawing.Point(55, 184);
+            this.statusLbl.Location = new System.Drawing.Point(55, 190);
             this.statusLbl.Name = "statusLbl";
             this.statusLbl.Size = new System.Drawing.Size(0, 13);
             this.statusLbl.TabIndex = 5;
             // 
             // stopBtn
             // 
-            this.stopBtn.Location = new System.Drawing.Point(409, 184);
+            this.stopBtn.Location = new System.Drawing.Point(269, 143);
             this.stopBtn.Name = "stopBtn";
             this.stopBtn.Size = new System.Drawing.Size(75, 23);
             this.stopBtn.TabIndex = 7;
@@ -104,17 +104,18 @@
             this.stopBtn.UseVisualStyleBackColor = true;
             this.stopBtn.Click += new System.EventHandler(this.stopBtn_Click);
             // 
-            // startTxt
+            // fileToolTxt
             // 
-            this.startTxt.Location = new System.Drawing.Point(58, 102);
-            this.startTxt.Name = "startTxt";
-            this.startTxt.Size = new System.Drawing.Size(286, 20);
-            this.startTxt.TabIndex = 10;
-            this.startTxt.Text = "  Nhập tên file cần start";
+            this.fileToolTxt.Location = new System.Drawing.Point(58, 102);
+            this.fileToolTxt.Name = "fileToolTxt";
+            this.fileToolTxt.Size = new System.Drawing.Size(286, 20);
+            this.fileToolTxt.TabIndex = 10;
+            this.fileToolTxt.Text = "  Nhập tên file";
+            this.fileToolTxt.TextChanged += new System.EventHandler(this.startTxt_TextChanged);
             // 
             // runBtn
             // 
-            this.runBtn.Location = new System.Drawing.Point(409, 143);
+            this.runBtn.Location = new System.Drawing.Point(58, 143);
             this.runBtn.Name = "runBtn";
             this.runBtn.Size = new System.Drawing.Size(75, 23);
             this.runBtn.TabIndex = 11;
@@ -122,22 +123,24 @@
             this.runBtn.UseVisualStyleBackColor = true;
             this.runBtn.Click += new System.EventHandler(this.runBtn_Click);
             // 
-            // stopTxt
+            // deleteBtn
             // 
-            this.stopTxt.Location = new System.Drawing.Point(58, 143);
-            this.stopTxt.Name = "stopTxt";
-            this.stopTxt.Size = new System.Drawing.Size(286, 20);
-            this.stopTxt.TabIndex = 12;
-            this.stopTxt.Text = "  Nhập tên file cần stop";
+            this.deleteBtn.Location = new System.Drawing.Point(409, 143);
+            this.deleteBtn.Name = "deleteBtn";
+            this.deleteBtn.Size = new System.Drawing.Size(75, 23);
+            this.deleteBtn.TabIndex = 12;
+            this.deleteBtn.Text = "Delete";
+            this.deleteBtn.UseVisualStyleBackColor = true;
+            this.deleteBtn.Click += new System.EventHandler(this.deleteBtn_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(517, 219);
-            this.Controls.Add(this.stopTxt);
+            this.Controls.Add(this.deleteBtn);
             this.Controls.Add(this.runBtn);
-            this.Controls.Add(this.startTxt);
+            this.Controls.Add(this.fileToolTxt);
             this.Controls.Add(this.stopBtn);
             this.Controls.Add(this.statusLbl);
             this.Controls.Add(this.uploadBtn);
@@ -161,9 +164,9 @@
         private System.Windows.Forms.Button uploadBtn;
         private System.Windows.Forms.Label statusLbl;
         private System.Windows.Forms.Button stopBtn;
-        private System.Windows.Forms.TextBox startTxt;
+        private System.Windows.Forms.TextBox fileToolTxt;
         private System.Windows.Forms.Button runBtn;
-        private System.Windows.Forms.TextBox stopTxt;
+        private System.Windows.Forms.Button deleteBtn;
     }
 }
 

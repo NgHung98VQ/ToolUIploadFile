@@ -100,11 +100,11 @@ namespace upload_file_to_iphone
                 statusLbl.Text = "upload file " + fileUpload + " to " + ip + "success!!";
             }
 
-            statusLbl.Text = "upload file success!!";
         }
 
         public void PlayScript(string address, string filePath)
         {
+            
             string rs = GetSVContent($@"http://{address}:8080/control/start_playing?path=/{filePath}");
             if (rs != "")
             {
@@ -160,13 +160,11 @@ namespace upload_file_to_iphone
 
             foreach (var line in lines)
             {
-                string filePath = startTxt.Text;
+                string filePath = fileToolTxt.Text;
                 string ip = line;
-                StopScript( ip,  filePath);
-                statusLbl.Text = "upload file " + fileUpload + " to " + ip + "success!!";
+                PlayScript(ip, filePath);
+                statusLbl.Text = "start file " + filePath + " to " + ip + "success!!";
             }
-
-            statusLbl.Text = "upload file success!!";
         }
 
         private void stopBtn_Click(object sender, EventArgs e)
@@ -175,13 +173,38 @@ namespace upload_file_to_iphone
 
             foreach (var line in lines)
             {
-                string filePath = startTxt.Text;
+                string filePath = fileToolTxt.Text;
                 string ip = line;
-                PlayScript(ip, filePath);
-                statusLbl.Text = "upload file " + fileUpload + " to " + ip + "success!!";
+                StopScript(ip, filePath);
+                statusLbl.Text = "stop file " + filePath + " to " + ip + "success!!";
             }
 
-            statusLbl.Text = "upload file success!!";
+        }
+
+        private void startTxt_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        public async Task<string> deleteFile(string ipIphone, string filePath)
+        {
+            var url = "http://" + ipIphone + ":8080/file/delete?path=/" + filePath;
+            Request api = new Request();
+            string data = await Task.Run(() => api.Get(url));
+            return data;
+        }
+
+        private void deleteBtn_Click(object sender, EventArgs e)
+        {
+            var lines = File.ReadAllLines(listIP);
+
+            foreach (var line in lines)
+            {
+                string filePath = fileToolTxt.Text;
+                string ip = line;
+                deleteFile(ip, filePath);
+                statusLbl.Text = "delete file " + filePath + " to " + ip + "success!!";
+            }
         }
     }
     public class Request
